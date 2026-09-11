@@ -1,0 +1,40 @@
+# ---- Python generated files ----
+# Python creates these automatically when you run code.
+# They are not your source code, so never commit them.
+__pycache__/
+*.pyc
+*.pyo
+
+# ---- Virtual environment ----
+# Your local Python environment folder. Everyone creates their own.
+.venv/
+venv/
+env/
+
+# ---- Environment variables / secrets ----
+# .env contains real API keys. NEVER commit this.
+# Use .env.example as a safe template instead.
+.env
+
+# ---- Chroma vector database ----
+# Generated when you build the RAG pipeline. Can be rebuilt from code.
+chroma_db/
+
+# ---- SQLite databases ----
+# Generated at runtime (e.g., checkpointing database).
+*.sqlite
+checkpoints.sqlite
+
+# ---- Conversation transcripts ----
+# These are generated at runtime and may contain user data.
+transcripts/*.json
+
+# ---- OS generated files ----
+.DS_Store
+Thumbs.db
+
+# ---- IDE / editor files ----
+.vscode/
+.idea/
+*.swp
+*.swo

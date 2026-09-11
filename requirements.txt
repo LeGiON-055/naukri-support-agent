@@ -1,0 +1,10 @@
+langchain
+langgraph
+langgraph-checkpoint-sqlite
+chromadb
+sentence-transformers
+fastapi
+uvicorn
+fastmcp
+pydantic
+python-dotenv
