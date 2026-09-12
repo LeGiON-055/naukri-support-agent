@@ -125,7 +125,11 @@ def build():
     client = chromadb.PersistentClient(path=CHROMA_DIR)
 
     # --- Collection 1: Fixed-size chunks ---
-    fixed_col = client.create_collection(name=FIXED_COLLECTION)
+    # Use cosine distance so returned values are (1 - cosine_similarity)
+    fixed_col = client.create_collection(
+        name=FIXED_COLLECTION,
+        metadata={"hnsw:space": "cosine"},
+    )
     fixed_col.add(
         ids=[f"fixed_{i}" for i in range(len(fixed_chunks))],
         documents=fixed_texts,
@@ -135,7 +139,10 @@ def build():
     print(f"  Collection '{FIXED_COLLECTION}': {fixed_col.count()} chunks stored")
 
     # --- Collection 2: Sentence-based chunks ---
-    sent_col = client.create_collection(name=SENTENCE_COLLECTION)
+    sent_col = client.create_collection(
+        name=SENTENCE_COLLECTION,
+        metadata={"hnsw:space": "cosine"},
+    )
     sent_col.add(
         ids=[f"sent_{i}" for i in range(len(sent_chunks))],
         documents=sent_texts,

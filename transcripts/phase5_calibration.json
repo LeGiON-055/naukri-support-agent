@@ -1,0 +1,337 @@
+{
+  "phase": "Phase 5 — Retrieval and Threshold Calibration",
+  "timestamp": "2026-09-12T21:54:41.518231",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "similarity_metric": "cosine_similarity (1 - chroma_cosine_distance)",
+  "top_k": 3,
+  "calibration": {
+    "sentence_chunks": {
+      "in_scope_scores": [
+        0.7187,
+        0.6993,
+        0.4683,
+        0.6442,
+        0.7335,
+        0.852,
+        0.7487
+      ],
+      "out_of_scope_scores": [
+        0.0977,
+        0.095,
+        0.0123
+      ],
+      "min_in_scope": 0.4683,
+      "max_out_scope": 0.0977,
+      "suggested_threshold": 0.28,
+      "details": [
+        {
+          "query": "Who is eligible to apply for a job?",
+          "type": "in_scope",
+          "expected_topic": "job_application_eligibility",
+          "top1_source": "job_application_eligibility.txt",
+          "top1_similarity": 0.7187,
+          "top1_text": "Any individual who meets the minimum qualifications listed in the job posting is eligible to apply f",
+          "correct_retrieval": true
+        },
+        {
+          "query": "How are interviews scheduled and can I reschedule?",
+          "type": "in_scope",
+          "expected_topic": "interview_scheduling",
+          "top1_source": "interview_scheduling.txt",
+          "top1_similarity": 0.6993,
+          "top1_text": "If a candidate needs to reschedule, they must request the change at least 24 hours before the origin",
+          "correct_retrieval": true
+        },
+        {
+          "query": "Can I negotiate my salary after receiving an offer?",
+          "type": "in_scope",
+          "expected_topic": "offer_negotiation",
+          "top1_source": "offer_negotiation.txt",
+          "top1_similarity": 0.4683,
+          "top1_text": "Candidates who receive a job offer may discuss compensation-related aspects such as salary, benefits",
+          "correct_retrieval": true
+        },
+        {
+          "query": "What happens during the probation period?",
+          "type": "in_scope",
+          "expected_topic": "probation_period",
+          "top1_source": "probation_period.txt",
+          "top1_similarity": 0.6442,
+          "top1_text": "Employees who do not meet the expected standards during probation may have their probation extended ",
+          "correct_retrieval": true
+        },
+        {
+          "query": "Am I eligible for remote work?",
+          "type": "in_scope",
+          "expected_topic": "remote_work",
+          "top1_source": "remote_work.txt",
+          "top1_similarity": 0.7335,
+          "top1_text": "Eligibility for remote work depends on the nature of the role and the operational requirements of th",
+          "correct_retrieval": true
+        },
+        {
+          "query": "How long is applicant data retained?",
+          "type": "in_scope",
+          "expected_topic": "applicant_data_retention",
+          "top1_source": "applicant_data_retention.txt",
+          "top1_similarity": 0.852,
+          "top1_text": "Applicant information collected during the recruitment process is retained for a period of 24 months",
+          "correct_retrieval": true
+        },
+        {
+          "query": "What is the referral bonus eligibility?",
+          "type": "in_scope",
+          "expected_topic": "referral_bonus",
+          "top1_source": "referral_bonus.txt",
+          "top1_similarity": 0.7487,
+          "top1_text": "Employees who refer a candidate that is subsequently hired may be eligible for a referral bonus as p",
+          "correct_retrieval": true
+        },
+        {
+          "query": "What is the weather in Mumbai today?",
+          "type": "out_of_scope",
+          "expected_topic": "NONE",
+          "top1_source": "interview_scheduling.txt",
+          "top1_similarity": 0.0977,
+          "top1_text": "The HR team will confirm any rescheduled interview details via email."
+        },
+        {
+          "query": "How do I cook chicken biryani?",
+          "type": "out_of_scope",
+          "expected_topic": "NONE",
+          "top1_source": "remote_work.txt",
+          "top1_similarity": 0.095,
+          "top1_text": "Employees whose roles permit remote work must obtain approval from their manager before transitionin"
+        },
+        {
+          "query": "What is the capital of France?",
+          "type": "out_of_scope",
+          "expected_topic": "NONE",
+          "top1_source": "applicant_data_retention.txt",
+          "top1_similarity": 0.0123,
+          "top1_text": "This is a fictional project policy created for educational purposes and does not constitute legal ad"
+        }
+      ]
+    },
+    "fixed_size_chunks": {
+      "in_scope_scores": [
+        0.7115,
+        0.6837,
+        0.5554,
+        0.6893,
+        0.7036,
+        0.8544,
+        0.7405
+      ],
+      "out_of_scope_scores": [
+        0.1141,
+        0.0869,
+        0.0499
+      ],
+      "min_in_scope": 0.5554,
+      "max_out_scope": 0.1141,
+      "suggested_threshold": 0.33,
+      "details": [
+        {
+          "query": "Who is eligible to apply for a job?",
+          "type": "in_scope",
+          "expected_topic": "job_application_eligibility",
+          "top1_source": "job_application_eligibility.txt",
+          "top1_similarity": 0.7115,
+          "top1_text": "Any individual who meets the minimum qualifications listed in the job posting is eligible to apply f",
+          "correct_retrieval": true
+        },
+        {
+          "query": "How are interviews scheduled and can I reschedule?",
+          "type": "in_scope",
+          "expected_topic": "interview_scheduling",
+          "top1_source": "interview_scheduling.txt",
+          "top1_similarity": 0.6837,
+          "top1_text": "ime, and format of the interview. If a candidate needs to reschedule, they must request the change a",
+          "correct_retrieval": true
+        },
+        {
+          "query": "Can I negotiate my salary after receiving an offer?",
+          "type": "in_scope",
+          "expected_topic": "offer_negotiation",
+          "top1_source": "offer_negotiation.txt",
+          "top1_similarity": 0.5554,
+          "top1_text": "Candidates who receive a job offer may discuss compensation-related aspects such as salary, benefits",
+          "correct_retrieval": true
+        },
+        {
+          "query": "What happens during the probation period?",
+          "type": "in_scope",
+          "expected_topic": "probation_period",
+          "top1_source": "probation_period.txt",
+          "top1_similarity": 0.6893,
+          "top1_text": "All new employees are placed on a probation period of 6 months from their date of joining. During pr",
+          "correct_retrieval": true
+        },
+        {
+          "query": "Am I eligible for remote work?",
+          "type": "in_scope",
+          "expected_topic": "remote_work",
+          "top1_source": "remote_work.txt",
+          "top1_similarity": 0.7036,
+          "top1_text": "Eligibility for remote work depends on the nature of the role and the operational requirements of th",
+          "correct_retrieval": true
+        },
+        {
+          "query": "How long is applicant data retained?",
+          "type": "in_scope",
+          "expected_topic": "applicant_data_retention",
+          "top1_source": "applicant_data_retention.txt",
+          "top1_similarity": 0.8544,
+          "top1_text": "Applicant information collected during the recruitment process is retained for a period of 24 months",
+          "correct_retrieval": true
+        },
+        {
+          "query": "What is the referral bonus eligibility?",
+          "type": "in_scope",
+          "expected_topic": "referral_bonus",
+          "top1_source": "referral_bonus.txt",
+          "top1_similarity": 0.7405,
+          "top1_text": "Employees who refer a candidate that is subsequently hired may be eligible for a referral bonus as p",
+          "correct_retrieval": true
+        },
+        {
+          "query": "What is the weather in Mumbai today?",
+          "type": "out_of_scope",
+          "expected_topic": "NONE",
+          "top1_source": "interview_scheduling.txt",
+          "top1_similarity": 0.1141,
+          "top1_text": "nterview time. Rescheduling requests received less than 24 hours in advance may not be accommodated,"
+        },
+        {
+          "query": "How do I cook chicken biryani?",
+          "type": "out_of_scope",
+          "expected_topic": "NONE",
+          "top1_source": "remote_work.txt",
+          "top1_similarity": 0.0869,
+          "top1_text": "Eligibility for remote work depends on the nature of the role and the operational requirements of th"
+        },
+        {
+          "query": "What is the capital of France?",
+          "type": "out_of_scope",
+          "expected_topic": "NONE",
+          "top1_source": "internal_transfer.txt",
+          "top1_similarity": 0.0499,
+          "top1_text": "team facilitates the transfer process and ensures that the transition does not disrupt ongoing proje"
+        }
+      ]
+    }
+  },
+  "selected_threshold": 0.28,
+  "demonstration": [
+    {
+      "collection": "sentence_chunks",
+      "query": "Who can apply for a job at the company?",
+      "top1_similarity": 0.6317,
+      "threshold": 0.28,
+      "is_supported": true,
+      "top_source": "job_application_eligibility.txt",
+      "answer": null
+    },
+    {
+      "collection": "sentence_chunks",
+      "query": "How do I reschedule my interview?",
+      "top1_similarity": 0.7113,
+      "threshold": 0.28,
+      "is_supported": true,
+      "top_source": "interview_scheduling.txt",
+      "answer": null
+    },
+    {
+      "collection": "sentence_chunks",
+      "query": "What is verified during background checks?",
+      "top1_similarity": 0.7054,
+      "threshold": 0.28,
+      "is_supported": true,
+      "top_source": "background_verification.txt",
+      "answer": null
+    },
+    {
+      "collection": "sentence_chunks",
+      "query": "How long is the notice period?",
+      "top1_similarity": 0.6919,
+      "threshold": 0.28,
+      "is_supported": true,
+      "top_source": "notice_period.txt",
+      "answer": null
+    },
+    {
+      "collection": "sentence_chunks",
+      "query": "What is the policy on diversity hiring?",
+      "top1_similarity": 0.6011,
+      "threshold": 0.28,
+      "is_supported": true,
+      "top_source": "diversity_hiring.txt",
+      "answer": null
+    },
+    {
+      "collection": "sentence_chunks",
+      "query": "What is the best programming language to learn?",
+      "top1_similarity": 0.0571,
+      "threshold": 0.28,
+      "is_supported": false,
+      "top_source": "N/A",
+      "answer": "I don't have enough information to answer that question. Please contact HR directly for assistance."
+    },
+    {
+      "collection": "fixed_size_chunks",
+      "query": "Who can apply for a job at the company?",
+      "top1_similarity": 0.638,
+      "threshold": 0.28,
+      "is_supported": true,
+      "top_source": "job_application_eligibility.txt",
+      "answer": null
+    },
+    {
+      "collection": "fixed_size_chunks",
+      "query": "How do I reschedule my interview?",
+      "top1_similarity": 0.6816,
+      "threshold": 0.28,
+      "is_supported": true,
+      "top_source": "interview_scheduling.txt",
+      "answer": null
+    },
+    {
+      "collection": "fixed_size_chunks",
+      "query": "What is verified during background checks?",
+      "top1_similarity": 0.7347,
+      "threshold": 0.28,
+      "is_supported": true,
+      "top_source": "background_verification.txt",
+      "answer": null
+    },
+    {
+      "collection": "fixed_size_chunks",
+      "query": "How long is the notice period?",
+      "top1_similarity": 0.6953,
+      "threshold": 0.28,
+      "is_supported": true,
+      "top_source": "notice_period.txt",
+      "answer": null
+    },
+    {
+      "collection": "fixed_size_chunks",
+      "query": "What is the policy on diversity hiring?",
+      "top1_similarity": 0.6068,
+      "threshold": 0.28,
+      "is_supported": true,
+      "top_source": "diversity_hiring.txt",
+      "answer": null
+    },
+    {
+      "collection": "fixed_size_chunks",
+      "query": "What is the best programming language to learn?",
+      "top1_similarity": 0.112,
+      "threshold": 0.28,
+      "is_supported": false,
+      "top_source": "N/A",
+      "answer": "I don't have enough information to answer that question. Please contact HR directly for assistance."
+    }
+  ]
+}
