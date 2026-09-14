@@ -1,0 +1,73 @@
+{
+  "task": "Capstone Task 8 \u2014 Persistent Conversation Memory",
+  "timestamp": "2026-09-13T17:03:03.980752",
+  "storage_file": "transcripts\\conversation_history.json",
+  "demonstrations": [
+    {
+      "scenario": "Multi-Turn Conversation Carryover",
+      "thread_id": "thread_conv_alpha",
+      "turns": [
+        {
+          "turn": 1,
+          "input_query": "What is the probation period?",
+          "loaded_history_count": 0,
+          "contextualized_query": "What is the probation period?",
+          "answer": "All new employees are placed on a probation period of 6 months from their date of joining. Employees who do not meet the expected standards during probation may have their probation extended or their employment terminated.",
+          "post_turn_history_count": 2,
+          "visited_nodes": [
+            "guardrail_node",
+            "intent_router_node",
+            "rag_policy_node",
+            "output_validation_node"
+          ]
+        },
+        {
+          "turn": 2,
+          "input_query": "How long is that period?",
+          "loaded_history_count": 2,
+          "contextualized_query": "How long is probation period?",
+          "answer": "All new employees are placed on a probation period of 6 months from their date of joining. Employees who do not meet the expected standards during probation may have their probation extended or their employment terminated.",
+          "post_turn_history_count": 4,
+          "visited_nodes": [
+            "guardrail_node",
+            "intent_router_node",
+            "rag_policy_node",
+            "output_validation_node"
+          ],
+          "context_carryover_successful": true
+        }
+      ]
+    },
+    {
+      "scenario": "Fresh Conversation Isolation",
+      "thread_id": "thread_conv_beta",
+      "turns": [
+        {
+          "turn": 1,
+          "input_query": "How long is that period?",
+          "loaded_history_count": 0,
+          "contextualized_query": "How long is that period?",
+          "primary_source": "notice_period.txt",
+          "answer": "A notice period is the duration a candidate is required to serve at their current employer before they can join a new organization. All new employees are placed on a probation period of 6 months from their date of joining.",
+          "intent": "policy_inquiry",
+          "context_inherited": false,
+          "post_turn_history_count": 2,
+          "visited_nodes": [
+            "guardrail_node",
+            "intent_router_node",
+            "rag_policy_node",
+            "output_validation_node"
+          ],
+          "isolated_from_thread_alpha": true
+        }
+      ]
+    },
+    {
+      "scenario": "PII Masking in Persistent Memory",
+      "thread_id": "thread_conv_gamma",
+      "stored_user_message": "My contact is [REDACTED_PHONE]. What is the notice period?",
+      "redacted_token_present": true,
+      "raw_phone_leaked": false
+    }
+  ]
+}

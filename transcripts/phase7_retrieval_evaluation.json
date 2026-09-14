@@ -1,0 +1,1075 @@
+{
+  "phase": "Phase 7 — Retrieval Evaluation",
+  "timestamp": "2026-09-13T14:47:08.836790",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "evaluation_dataset_size": 12,
+  "top_k": 3,
+  "evaluation_type": "Document-level (with parent document deduplication)",
+  "strategies": {
+    "fixed_size_chunks": {
+      "strategy_name": "Fixed-size-with-overlap",
+      "avg_precision_at_3": 0.9583,
+      "avg_recall_at_3": 1.0,
+      "queries": [
+        {
+          "query_id": "EVAL-01",
+          "topic": "job_application_eligibility",
+          "query": "What are the minimum qualifications and eligibility requirements to apply for a job posting?",
+          "expected_documents": [
+            "job_application_eligibility.txt"
+          ],
+          "raw_retrieved_docs": [
+            "job_application_eligibility.txt",
+            "job_application_eligibility.txt",
+            "diversity_hiring.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "job_application_eligibility.txt",
+              "cosine_similarity": 0.7064,
+              "text_preview": "Any individual who meets the minimum qualifications listed in the job posting is..."
+            },
+            {
+              "chunk_index": 3,
+              "source": "job_application_eligibility.txt",
+              "cosine_similarity": 0.4696,
+              "text_preview": "s are reviewed based on the qualifications and requirements specified in the res..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "diversity_hiring.txt",
+              "cosine_similarity": 0.4685,
+              "text_preview": "based on their qualifications, skills, and experience, without regard to gender,..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "job_application_eligibility.txt",
+            "diversity_hiring.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "job_application_eligibility.txt"
+          ],
+          "precision_at_3": 0.5,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/2 = 0.5000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-02",
+          "topic": "interview_scheduling",
+          "query": "How can a candidate reschedule an interview and what is the notice window required?",
+          "expected_documents": [
+            "interview_scheduling.txt"
+          ],
+          "raw_retrieved_docs": [
+            "interview_scheduling.txt",
+            "interview_scheduling.txt",
+            "interview_scheduling.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 1,
+              "source": "interview_scheduling.txt",
+              "cosine_similarity": 0.7224,
+              "text_preview": "ime, and format of the interview. If a candidate needs to reschedule, they must ..."
+            },
+            {
+              "chunk_index": 0,
+              "source": "interview_scheduling.txt",
+              "cosine_similarity": 0.655,
+              "text_preview": "Interviews are scheduled by the HR team after a candidate's application has been..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "interview_scheduling.txt",
+              "cosine_similarity": 0.6128,
+              "text_preview": "nterview time. Rescheduling requests received less than 24 hours in advance may ..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "interview_scheduling.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "interview_scheduling.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-03",
+          "topic": "offer_negotiation",
+          "query": "Can candidates negotiate salary and benefits after receiving an initial offer?",
+          "expected_documents": [
+            "offer_negotiation.txt"
+          ],
+          "raw_retrieved_docs": [
+            "offer_negotiation.txt",
+            "offer_negotiation.txt",
+            "offer_negotiation.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "offer_negotiation.txt",
+              "cosine_similarity": 0.6564,
+              "text_preview": "Candidates who receive a job offer may discuss compensation-related aspects such..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "offer_negotiation.txt",
+              "cosine_similarity": 0.4464,
+              "text_preview": "equests are reviewed by the hiring manager and HR in consultation, and any revis..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "offer_negotiation.txt",
+              "cosine_similarity": 0.4251,
+              "text_preview": "e negotiation discussions promptly after receiving the initial offer to avoid de..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "offer_negotiation.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "offer_negotiation.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-04",
+          "topic": "probation_period",
+          "query": "How long is the employee probation period and how is performance evaluated?",
+          "expected_documents": [
+            "probation_period.txt"
+          ],
+          "raw_retrieved_docs": [
+            "probation_period.txt",
+            "probation_period.txt",
+            "probation_period.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "probation_period.txt",
+              "cosine_similarity": 0.7609,
+              "text_preview": "All new employees are placed on a probation period of 6 months from their date o..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "probation_period.txt",
+              "cosine_similarity": 0.6923,
+              "text_preview": "suitability for the role are evaluated through regular check-ins with their mana..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "probation_period.txt",
+              "cosine_similarity": 0.6382,
+              "text_preview": "s conducted to determine whether the employee will be confirmed as a permanent m..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "probation_period.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "probation_period.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-05",
+          "topic": "remote_work",
+          "query": "What is the policy and manager approval process for remote work eligibility?",
+          "expected_documents": [
+            "remote_work.txt"
+          ],
+          "raw_retrieved_docs": [
+            "remote_work.txt",
+            "remote_work.txt",
+            "remote_work.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "remote_work.txt",
+              "cosine_similarity": 0.7704,
+              "text_preview": "Eligibility for remote work depends on the nature of the role and the operationa..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "remote_work.txt",
+              "cosine_similarity": 0.6647,
+              "text_preview": "ust obtain approval from their manager before transitioning to a remote arrangem..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "remote_work.txt",
+              "cosine_similarity": 0.533,
+              "text_preview": "ified or revoked based on business needs or changes in the employee's role. All ..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "remote_work.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "remote_work.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-06",
+          "topic": "applicant_data_retention",
+          "query": "How long does the company retain applicant personal data and resume records?",
+          "expected_documents": [
+            "applicant_data_retention.txt"
+          ],
+          "raw_retrieved_docs": [
+            "applicant_data_retention.txt",
+            "applicant_data_retention.txt",
+            "applicant_data_retention.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "applicant_data_retention.txt",
+              "cosine_similarity": 0.7237,
+              "text_preview": "Applicant information collected during the recruitment process is retained for a..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "applicant_data_retention.txt",
+              "cosine_similarity": 0.5498,
+              "text_preview": "h it is securely deleted. This data is retained to facilitate future job matchin..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "applicant_data_retention.txt",
+              "cosine_similarity": 0.4093,
+              "text_preview": "applicant records is restricted to authorized HR personnel and is treated as str..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "applicant_data_retention.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "applicant_data_retention.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-07",
+          "topic": "referral_bonus",
+          "query": "When is an employee referral bonus paid out and what are the eligibility terms?",
+          "expected_documents": [
+            "referral_bonus.txt"
+          ],
+          "raw_retrieved_docs": [
+            "referral_bonus.txt",
+            "referral_bonus.txt",
+            "referral_bonus.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "referral_bonus.txt",
+              "cosine_similarity": 0.7612,
+              "text_preview": "Employees who refer a candidate that is subsequently hired may be eligible for a..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "referral_bonus.txt",
+              "cosine_similarity": 0.6852,
+              "text_preview": "ust be an active employee at the time the bonus is processed. Details of the ref..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "referral_bonus.txt",
+              "cosine_similarity": 0.5816,
+              "text_preview": "nus becomes applicable only after the referred candidate successfully completes ..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "referral_bonus.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "referral_bonus.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-08",
+          "topic": "background_verification",
+          "query": "What background verification checks are performed on education and employment history?",
+          "expected_documents": [
+            "background_verification.txt"
+          ],
+          "raw_retrieved_docs": [
+            "background_verification.txt",
+            "background_verification.txt",
+            "background_verification.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "background_verification.txt",
+              "cosine_similarity": 0.6515,
+              "text_preview": "Background verification is conducted after a candidate accepts the job offer and..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "background_verification.txt",
+              "cosine_similarity": 0.5197,
+              "text_preview": "rocess may include checks on employment history, educational qualifications, and..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "background_verification.txt",
+              "cosine_similarity": 0.4705,
+              "text_preview": "d to provide accurate and verifiable documents to support their application. Any..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "background_verification.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "background_verification.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-09",
+          "topic": "internal_transfer",
+          "query": "When can an employee apply for an internal job transfer to another team?",
+          "expected_documents": [
+            "internal_transfer.txt"
+          ],
+          "raw_retrieved_docs": [
+            "internal_transfer.txt",
+            "internal_transfer.txt",
+            "internal_transfer.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "internal_transfer.txt",
+              "cosine_similarity": 0.7501,
+              "text_preview": "Employees who have completed a minimum of 12 months in their current role may re..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "internal_transfer.txt",
+              "cosine_similarity": 0.4926,
+              "text_preview": "team facilitates the transfer process and ensures that the transition does not d..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "internal_transfer.txt",
+              "cosine_similarity": 0.4516,
+              "text_preview": "uests must be submitted to the employee's current manager and require approval f..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "internal_transfer.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "internal_transfer.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-10",
+          "topic": "diversity_hiring",
+          "query": "What are the company's equal opportunity and diversity hiring principles?",
+          "expected_documents": [
+            "diversity_hiring.txt"
+          ],
+          "raw_retrieved_docs": [
+            "diversity_hiring.txt",
+            "diversity_hiring.txt",
+            "diversity_hiring.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "diversity_hiring.txt",
+              "cosine_similarity": 0.7529,
+              "text_preview": "The company is committed to diversity, inclusion, and equal opportunity in all a..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "diversity_hiring.txt",
+              "cosine_similarity": 0.5039,
+              "text_preview": "based on their qualifications, skills, and experience, without regard to gender,..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "diversity_hiring.txt",
+              "cosine_similarity": 0.3983,
+              "text_preview": "ic. Hiring decisions are made solely on the basis of merit and the candidate's s..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "diversity_hiring.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "diversity_hiring.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-11",
+          "topic": "notice_period",
+          "query": "What are the rules regarding notice period disclosure and agreeing on joining dates?",
+          "expected_documents": [
+            "notice_period.txt"
+          ],
+          "raw_retrieved_docs": [
+            "notice_period.txt",
+            "notice_period.txt",
+            "notice_period.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "notice_period.txt",
+              "cosine_similarity": 0.6283,
+              "text_preview": "A notice period is the duration a candidate is required to serve at their curren..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "notice_period.txt",
+              "cosine_similarity": 0.5853,
+              "text_preview": "sclose their notice period during the offer stage so that a mutually agreeable j..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "notice_period.txt",
+              "cosine_similarity": 0.5474,
+              "text_preview": "notice periods, but candidates are expected to communicate any delays or changes..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "notice_period.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "notice_period.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-12",
+          "topic": "exit_interview",
+          "query": "What is the purpose of an exit interview and is participation mandatory?",
+          "expected_documents": [
+            "exit_interview.txt"
+          ],
+          "raw_retrieved_docs": [
+            "exit_interview.txt",
+            "exit_interview.txt",
+            "exit_interview.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "exit_interview.txt",
+              "cosine_similarity": 0.7719,
+              "text_preview": "An exit interview is a meeting conducted by the HR team with an employee who has..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "exit_interview.txt",
+              "cosine_similarity": 0.7598,
+              "text_preview": "eriod. The purpose of the exit interview is to gather feedback about the employe..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "exit_interview.txt",
+              "cosine_similarity": 0.6633,
+              "text_preview": "re the organization can improve. Participation in the exit interview is encourag..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "exit_interview.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "exit_interview.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        }
+      ]
+    },
+    "sentence_chunks": {
+      "strategy_name": "Sentence-based",
+      "avg_precision_at_3": 0.9167,
+      "avg_recall_at_3": 1.0,
+      "queries": [
+        {
+          "query_id": "EVAL-01",
+          "topic": "job_application_eligibility",
+          "query": "What are the minimum qualifications and eligibility requirements to apply for a job posting?",
+          "expected_documents": [
+            "job_application_eligibility.txt"
+          ],
+          "raw_retrieved_docs": [
+            "job_application_eligibility.txt",
+            "job_application_eligibility.txt",
+            "job_application_eligibility.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "job_application_eligibility.txt",
+              "cosine_similarity": 0.6567,
+              "text_preview": "Any individual who meets the minimum qualifications listed in the job posting is..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "job_application_eligibility.txt",
+              "cosine_similarity": 0.5818,
+              "text_preview": "Applicants must provide accurate and complete information, including their educa..."
+            },
+            {
+              "chunk_index": 3,
+              "source": "job_application_eligibility.txt",
+              "cosine_similarity": 0.4803,
+              "text_preview": "All applications are reviewed based on the qualifications and requirements speci..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "job_application_eligibility.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "job_application_eligibility.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-02",
+          "topic": "interview_scheduling",
+          "query": "How can a candidate reschedule an interview and what is the notice window required?",
+          "expected_documents": [
+            "interview_scheduling.txt"
+          ],
+          "raw_retrieved_docs": [
+            "interview_scheduling.txt",
+            "interview_scheduling.txt",
+            "interview_scheduling.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 1,
+              "source": "interview_scheduling.txt",
+              "cosine_similarity": 0.7501,
+              "text_preview": "If a candidate needs to reschedule, they must request the change at least 24 hou..."
+            },
+            {
+              "chunk_index": 3,
+              "source": "interview_scheduling.txt",
+              "cosine_similarity": 0.6323,
+              "text_preview": "The HR team will confirm any rescheduled interview details via email."
+            },
+            {
+              "chunk_index": 0,
+              "source": "interview_scheduling.txt",
+              "cosine_similarity": 0.6306,
+              "text_preview": "Interviews are scheduled by the HR team after a candidate's application has been..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "interview_scheduling.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "interview_scheduling.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-03",
+          "topic": "offer_negotiation",
+          "query": "Can candidates negotiate salary and benefits after receiving an initial offer?",
+          "expected_documents": [
+            "offer_negotiation.txt"
+          ],
+          "raw_retrieved_docs": [
+            "offer_negotiation.txt",
+            "offer_negotiation.txt",
+            "offer_negotiation.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "offer_negotiation.txt",
+              "cosine_similarity": 0.6099,
+              "text_preview": "Candidates who receive a job offer may discuss compensation-related aspects such..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "offer_negotiation.txt",
+              "cosine_similarity": 0.5157,
+              "text_preview": "Candidates are encouraged to raise negotiation discussions promptly after receiv..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "offer_negotiation.txt",
+              "cosine_similarity": 0.4702,
+              "text_preview": "Negotiation requests are reviewed by the hiring manager and HR in consultation, ..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "offer_negotiation.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "offer_negotiation.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-04",
+          "topic": "probation_period",
+          "query": "How long is the employee probation period and how is performance evaluated?",
+          "expected_documents": [
+            "probation_period.txt"
+          ],
+          "raw_retrieved_docs": [
+            "probation_period.txt",
+            "probation_period.txt",
+            "probation_period.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 2,
+              "source": "probation_period.txt",
+              "cosine_similarity": 0.6962,
+              "text_preview": "At the end of the probation period, a formal performance review is conducted to ..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "probation_period.txt",
+              "cosine_similarity": 0.6804,
+              "text_preview": "During probation, the employee's performance, conduct, and suitability for the r..."
+            },
+            {
+              "chunk_index": 0,
+              "source": "probation_period.txt",
+              "cosine_similarity": 0.6535,
+              "text_preview": "All new employees are placed on a probation period of 6 months from their date o..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "probation_period.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "probation_period.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-05",
+          "topic": "remote_work",
+          "query": "What is the policy and manager approval process for remote work eligibility?",
+          "expected_documents": [
+            "remote_work.txt"
+          ],
+          "raw_retrieved_docs": [
+            "remote_work.txt",
+            "remote_work.txt",
+            "remote_work.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 1,
+              "source": "remote_work.txt",
+              "cosine_similarity": 0.8172,
+              "text_preview": "Employees whose roles permit remote work must obtain approval from their manager..."
+            },
+            {
+              "chunk_index": 0,
+              "source": "remote_work.txt",
+              "cosine_similarity": 0.6772,
+              "text_preview": "Eligibility for remote work depends on the nature of the role and the operationa..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "remote_work.txt",
+              "cosine_similarity": 0.6097,
+              "text_preview": "Remote work arrangements are reviewed periodically and may be modified or revoke..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "remote_work.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "remote_work.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-06",
+          "topic": "applicant_data_retention",
+          "query": "How long does the company retain applicant personal data and resume records?",
+          "expected_documents": [
+            "applicant_data_retention.txt"
+          ],
+          "raw_retrieved_docs": [
+            "applicant_data_retention.txt",
+            "applicant_data_retention.txt",
+            "probation_period.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "applicant_data_retention.txt",
+              "cosine_similarity": 0.7172,
+              "text_preview": "Applicant information collected during the recruitment process is retained for a..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "applicant_data_retention.txt",
+              "cosine_similarity": 0.6722,
+              "text_preview": "This data is retained to facilitate future job matching and to maintain records ..."
+            },
+            {
+              "chunk_index": 0,
+              "source": "probation_period.txt",
+              "cosine_similarity": 0.3492,
+              "text_preview": "All new employees are placed on a probation period of 6 months from their date o..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "applicant_data_retention.txt",
+            "probation_period.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "applicant_data_retention.txt"
+          ],
+          "precision_at_3": 0.5,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/2 = 0.5000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-07",
+          "topic": "referral_bonus",
+          "query": "When is an employee referral bonus paid out and what are the eligibility terms?",
+          "expected_documents": [
+            "referral_bonus.txt"
+          ],
+          "raw_retrieved_docs": [
+            "referral_bonus.txt",
+            "referral_bonus.txt",
+            "referral_bonus.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "referral_bonus.txt",
+              "cosine_similarity": 0.7713,
+              "text_preview": "Employees who refer a candidate that is subsequently hired may be eligible for a..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "referral_bonus.txt",
+              "cosine_similarity": 0.7332,
+              "text_preview": "To be eligible, the referring employee must be an active employee at the time th..."
+            },
+            {
+              "chunk_index": 3,
+              "source": "referral_bonus.txt",
+              "cosine_similarity": 0.7267,
+              "text_preview": "Details of the referral bonus amount and payment schedule are communicated by th..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "referral_bonus.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "referral_bonus.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-08",
+          "topic": "background_verification",
+          "query": "What background verification checks are performed on education and employment history?",
+          "expected_documents": [
+            "background_verification.txt"
+          ],
+          "raw_retrieved_docs": [
+            "background_verification.txt",
+            "background_verification.txt",
+            "applicant_data_retention.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 1,
+              "source": "background_verification.txt",
+              "cosine_similarity": 0.6832,
+              "text_preview": "The verification process may include checks on employment history, educational q..."
+            },
+            {
+              "chunk_index": 0,
+              "source": "background_verification.txt",
+              "cosine_similarity": 0.6062,
+              "text_preview": "Background verification is conducted after a candidate accepts the job offer and..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "applicant_data_retention.txt",
+              "cosine_similarity": 0.4633,
+              "text_preview": "This data is retained to facilitate future job matching and to maintain records ..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "background_verification.txt",
+            "applicant_data_retention.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "background_verification.txt"
+          ],
+          "precision_at_3": 0.5,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/2 = 0.5000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-09",
+          "topic": "internal_transfer",
+          "query": "When can an employee apply for an internal job transfer to another team?",
+          "expected_documents": [
+            "internal_transfer.txt"
+          ],
+          "raw_retrieved_docs": [
+            "internal_transfer.txt",
+            "internal_transfer.txt",
+            "internal_transfer.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "internal_transfer.txt",
+              "cosine_similarity": 0.7537,
+              "text_preview": "Employees who have completed a minimum of 12 months in their current role may re..."
+            },
+            {
+              "chunk_index": 1,
+              "source": "internal_transfer.txt",
+              "cosine_similarity": 0.564,
+              "text_preview": "Transfer requests must be submitted to the employee's current manager and requir..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "internal_transfer.txt",
+              "cosine_similarity": 0.4349,
+              "text_preview": "The HR team facilitates the transfer process and ensures that the transition doe..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "internal_transfer.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "internal_transfer.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-10",
+          "topic": "diversity_hiring",
+          "query": "What are the company's equal opportunity and diversity hiring principles?",
+          "expected_documents": [
+            "diversity_hiring.txt"
+          ],
+          "raw_retrieved_docs": [
+            "diversity_hiring.txt",
+            "diversity_hiring.txt",
+            "diversity_hiring.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 0,
+              "source": "diversity_hiring.txt",
+              "cosine_similarity": 0.7244,
+              "text_preview": "The company is committed to diversity, inclusion, and equal opportunity in all a..."
+            },
+            {
+              "chunk_index": 3,
+              "source": "diversity_hiring.txt",
+              "cosine_similarity": 0.4405,
+              "text_preview": "The recruitment team is trained to apply unbiased evaluation criteria consistent..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "diversity_hiring.txt",
+              "cosine_similarity": 0.3914,
+              "text_preview": "Hiring decisions are made solely on the basis of merit and the candidate's suita..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "diversity_hiring.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "diversity_hiring.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-11",
+          "topic": "notice_period",
+          "query": "What are the rules regarding notice period disclosure and agreeing on joining dates?",
+          "expected_documents": [
+            "notice_period.txt"
+          ],
+          "raw_retrieved_docs": [
+            "notice_period.txt",
+            "notice_period.txt",
+            "notice_period.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 1,
+              "source": "notice_period.txt",
+              "cosine_similarity": 0.8067,
+              "text_preview": "Candidates must disclose their notice period during the offer stage so that a mu..."
+            },
+            {
+              "chunk_index": 0,
+              "source": "notice_period.txt",
+              "cosine_similarity": 0.5699,
+              "text_preview": "A notice period is the duration a candidate is required to serve at their curren..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "notice_period.txt",
+              "cosine_similarity": 0.5549,
+              "text_preview": "The company may accommodate reasonable notice periods, but candidates are expect..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "notice_period.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "notice_period.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        },
+        {
+          "query_id": "EVAL-12",
+          "topic": "exit_interview",
+          "query": "What is the purpose of an exit interview and is participation mandatory?",
+          "expected_documents": [
+            "exit_interview.txt"
+          ],
+          "raw_retrieved_docs": [
+            "exit_interview.txt",
+            "exit_interview.txt",
+            "exit_interview.txt"
+          ],
+          "retrieved_chunk_previews": [
+            {
+              "chunk_index": 1,
+              "source": "exit_interview.txt",
+              "cosine_similarity": 0.8324,
+              "text_preview": "The purpose of the exit interview is to gather feedback about the employee's exp..."
+            },
+            {
+              "chunk_index": 0,
+              "source": "exit_interview.txt",
+              "cosine_similarity": 0.7776,
+              "text_preview": "An exit interview is a meeting conducted by the HR team with an employee who has..."
+            },
+            {
+              "chunk_index": 2,
+              "source": "exit_interview.txt",
+              "cosine_similarity": 0.7061,
+              "text_preview": "Participation in the exit interview is encouraged but voluntary, and all feedbac..."
+            }
+          ],
+          "deduped_retrieved_docs": [
+            "exit_interview.txt"
+          ],
+          "relevant_retrieved_docs": [
+            "exit_interview.txt"
+          ],
+          "precision_at_3": 1.0,
+          "recall_at_3": 1.0,
+          "arithmetic_precision": "1/1 = 1.0000",
+          "arithmetic_recall": "1/1 = 1.0000"
+        }
+      ]
+    }
+  },
+  "comparison_table": [
+    {
+      "strategy": "Fixed-size-with-overlap",
+      "collection": "fixed_size_chunks",
+      "avg_precision_at_3": 0.9583,
+      "avg_recall_at_3": 1.0
+    },
+    {
+      "strategy": "Sentence-based",
+      "collection": "sentence_chunks",
+      "avg_precision_at_3": 0.9167,
+      "avg_recall_at_3": 1.0
+    }
+  ],
+  "recommendation": "Both strategies achieve equal Recall@3 (1.0000), with Precision@3 of 0.9167 (Sentence-based) vs 0.9583 (Fixed-size). Sentence-based chunking is selected for the production agent because each retrieved passage forms a grammatically complete sentence, making context formatting and answer generation substantially more coherent."
+}

@@ -1,0 +1,79 @@
+{
+  "phase": "Phase 6 \u2014 Grounded Answer Generation & Groundedness Verification",
+  "timestamp": "2026-09-12T22:48:03.258167",
+  "mock_mode": true,
+  "calibrated_threshold": 0.28,
+  "demonstrations": [
+    {
+      "case_id": "CASE_A_IN_SCOPE_1",
+      "scenario": "In-Scope Question (Probation Period)",
+      "query": "What is the probation period?",
+      "expected_result": "ACCEPTED_AND_GROUNDED",
+      "top1_similarity": 0.6417,
+      "retrieval_accepted": true,
+      "primary_source": "probation_period.txt",
+      "generated_answer": "All new employees are placed on a probation period of 6 months from their date of joining. Employees who do not meet the expected standards during probation may have their probation extended or their employment terminated.",
+      "groundedness_score": 1.0,
+      "is_grounded": true,
+      "final_response": "All new employees are placed on a probation period of 6 months from their date of joining. Employees who do not meet the expected standards during probation may have their probation extended or their employment terminated.",
+      "fallback_triggered": false
+    },
+    {
+      "case_id": "CASE_B_IN_SCOPE_2",
+      "scenario": "In-Scope Question (Offer Negotiation)",
+      "query": "Can I negotiate my salary after receiving an offer?",
+      "expected_result": "ACCEPTED_AND_GROUNDED",
+      "top1_similarity": 0.4683,
+      "retrieval_accepted": true,
+      "primary_source": "offer_negotiation.txt",
+      "generated_answer": "Candidates who receive a job offer may discuss compensation-related aspects such as salary, benefits, and joining date with the HR team. Negotiation requests are reviewed by the hiring manager and HR in consultation, and any revised offer is communicated in writing.",
+      "groundedness_score": 1.0,
+      "is_grounded": true,
+      "final_response": "Candidates who receive a job offer may discuss compensation-related aspects such as salary, benefits, and joining date with the HR team. Negotiation requests are reviewed by the hiring manager and HR in consultation, and any revised offer is communicated in writing.",
+      "fallback_triggered": false
+    },
+    {
+      "case_id": "CASE_C_OUT_OF_SCOPE",
+      "scenario": "Out-of-Scope Question (Guardrail 1: Retrieval Threshold)",
+      "query": "What is the capital of France?",
+      "expected_result": "REJECTED_BY_THRESHOLD",
+      "top1_similarity": 0.0123,
+      "retrieval_accepted": false,
+      "rejection_reason": "retrieval_threshold",
+      "primary_source": null,
+      "generated_answer": null,
+      "groundedness_score": 0.0,
+      "is_grounded": false,
+      "final_response": "I don't have enough information to answer that question. Please contact HR directly for assistance.",
+      "fallback_triggered": true
+    },
+    {
+      "case_id": "CASE_D_GROUNDEDNESS_FAILURE",
+      "scenario": "Unsupported Candidate Answer (Guardrail 2: Groundedness Check)",
+      "query": "What happens during the probation period?",
+      "expected_result": "REJECTED_BY_GROUNDEDNESS",
+      "top1_similarity": 0.6442,
+      "retrieval_accepted": true,
+      "rejection_reason": "groundedness_failure",
+      "simulated_unsupported_answer": "Employees on probation are entitled to 45 days of paid executive vacation, first-class international airline tickets, and complimentary private gourmet catering.",
+      "groundedness_score": 0.1333,
+      "is_grounded": false,
+      "groundedness_details": {
+        "total_content_words": 15,
+        "supported_words_count": 2,
+        "unsupported_words_count": 13,
+        "unsupported_samples": [
+          "entitled",
+          "days",
+          "paid",
+          "executive",
+          "vacation"
+        ],
+        "score": 0.1333,
+        "threshold": 0.8
+      },
+      "final_response": "I don't have enough information to answer that question. Please contact HR directly for assistance.",
+      "fallback_triggered": true
+    }
+  ]
+}

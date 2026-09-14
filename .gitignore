@@ -23,12 +23,30 @@ chroma_db/
 # ---- SQLite databases ----
 # Generated at runtime (e.g., checkpointing database).
 *.sqlite
+*.db
 checkpoints.sqlite
+checkpoints.db
+resilience/*.db
+resilience/*.sqlite
 
 # ---- Conversation transcripts ----
 # These are generated at runtime and may contain user data.
 transcripts/*.json
 !transcripts/phase5_calibration.json
+!transcripts/phase6_generation.json
+!transcripts/phase7_retrieval_evaluation.json
+!transcripts/phase8_application_tool.json
+!transcripts/phase9_schemas.json
+!transcripts/phase10_guardrails.json
+!transcripts/task7_langgraph.json
+!transcripts/task8_memory.json
+!transcripts/task11_fastapi.json
+!transcripts/task12_logging.json
+!transcripts/task13_rag_triad.json
+!transcripts/task14_mcp.json
+!transcripts/task15_checkpointing.json
+!transcripts/task16_resilience.json
+!transcripts/requests.jsonl
 
 # ---- OS generated files ----
 .DS_Store

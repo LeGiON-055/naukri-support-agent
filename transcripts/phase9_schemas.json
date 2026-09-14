@@ -1,0 +1,361 @@
+{
+  "phase": "Phase 9 — Structured Output Schemas & Response Standardization",
+  "timestamp": "2026-09-13T16:01:26.409656",
+  "json_schema": {
+    "$defs": {
+      "ApplicationDetails": {
+        "description": "Structured details for a job application status query.",
+        "properties": {
+          "record_id": {
+            "description": "Unique application identifier, e.g. 'APP-001'",
+            "title": "Record Id",
+            "type": "string"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Job role category, e.g. 'Software Engineer'",
+            "title": "Category"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Application status, e.g. 'Screening', 'Applied'",
+            "title": "Status"
+          },
+          "expected_salary_inr": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Expected salary in INR",
+            "title": "Expected Salary Inr"
+          },
+          "days_since_created": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Days elapsed since application was created",
+            "title": "Days Since Created"
+          },
+          "flagged_priority_review": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Whether HR marked this application for priority review",
+            "title": "Flagged Priority Review"
+          },
+          "escalation_score": {
+            "anyOf": [
+              {
+                "maximum": 1.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Computed urgency score strictly between 0.0 and 1.0",
+            "title": "Escalation Score"
+          },
+          "escalation_threshold": {
+            "default": 0.45,
+            "description": "Active escalation threshold calibrated from dataset P80",
+            "title": "Escalation Threshold",
+            "type": "number"
+          }
+        },
+        "required": [
+          "record_id"
+        ],
+        "title": "ApplicationDetails",
+        "type": "object"
+      },
+      "RefusalInfo": {
+        "description": "Metadata explaining why a query was rejected or refused.",
+        "properties": {
+          "reason": {
+            "description": "Standard reason identifier, e.g. 'retrieval_threshold', 'prompt_injection'",
+            "title": "Reason",
+            "type": "string"
+          },
+          "details": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Human-readable explanation of the refusal reason",
+            "title": "Details"
+          },
+          "similarity_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Observed cosine similarity if threshold-rejected",
+            "title": "Similarity Score"
+          },
+          "threshold": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "The active threshold compared against",
+            "title": "Threshold"
+          }
+        },
+        "required": [
+          "reason"
+        ],
+        "title": "RefusalInfo",
+        "type": "object"
+      }
+    },
+    "description": "Standardized, validated response contract for the Naukri Domain Support Agent.\nEvery agent invocation produces a response conforming to this model.",
+    "properties": {
+      "intent": {
+        "description": "Classified conversation intent",
+        "enum": [
+          "policy_inquiry",
+          "application_status",
+          "out_of_scope",
+          "security_violation"
+        ],
+        "title": "Intent",
+        "type": "string"
+      },
+      "answer": {
+        "description": "Natural language response text presented to the user",
+        "minLength": 1,
+        "title": "Answer",
+        "type": "string"
+      },
+      "sources": {
+        "description": "List of parent policy documents referenced (citations)",
+        "items": {
+          "type": "string"
+        },
+        "title": "Sources",
+        "type": "array"
+      },
+      "is_escalated": {
+        "default": false,
+        "description": "Whether this query triggered human recruiter escalation",
+        "title": "Is Escalated",
+        "type": "boolean"
+      },
+      "application_details": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/ApplicationDetails"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Structured application telemetry if status query"
+      },
+      "refusal_info": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/RefusalInfo"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Refusal telemetry if query rejected"
+      }
+    },
+    "required": [
+      "intent",
+      "answer"
+    ],
+    "title": "AgentResponse",
+    "type": "object"
+  },
+  "positive_tests": [
+    {
+      "case_id": "POS_1_POLICY_INQUIRY",
+      "scenario": "In-Scope Policy Inquiry with Source Citations",
+      "is_valid": true,
+      "error": null,
+      "validated_payload": {
+        "intent": "policy_inquiry",
+        "answer": "All new employees are placed on a probation period of 6 months from their date of joining. Performance reviews determine confirmation.",
+        "sources": [
+          "probation_period.txt"
+        ],
+        "is_escalated": false,
+        "application_details": null,
+        "refusal_info": null
+      }
+    },
+    {
+      "case_id": "POS_2_STATUS_ROUTINE",
+      "scenario": "Standard Routine Application Status (Normal Progression)",
+      "is_valid": true,
+      "error": null,
+      "validated_payload": {
+        "intent": "application_status",
+        "answer": "Application 'APP-002' for Data Analyst is currently in 'Screening' status with expected salary of INR 980,000. It is progressing normally.",
+        "sources": [],
+        "is_escalated": false,
+        "application_details": {
+          "record_id": "APP-002",
+          "category": "Data Analyst",
+          "status": "Screening",
+          "expected_salary_inr": 980000,
+          "days_since_created": 7,
+          "flagged_priority_review": false,
+          "escalation_score": 0.1167,
+          "escalation_threshold": 0.45
+        },
+        "refusal_info": null
+      }
+    },
+    {
+      "case_id": "POS_3_STATUS_ESCALATED",
+      "scenario": "Escalated Application Status (Urgent Recruiter Intervention)",
+      "is_valid": true,
+      "error": null,
+      "validated_payload": {
+        "intent": "application_status",
+        "answer": "Application 'APP-035' for Sales Associate is in 'Screening' status. This case has been ESCALATED (score: 0.9833 >= 0.45) for priority review.",
+        "sources": [],
+        "is_escalated": true,
+        "application_details": {
+          "record_id": "APP-035",
+          "category": "Sales Associate",
+          "status": "Screening",
+          "expected_salary_inr": 780000,
+          "days_since_created": 29,
+          "flagged_priority_review": true,
+          "escalation_score": 0.9833,
+          "escalation_threshold": 0.45
+        },
+        "refusal_info": null
+      }
+    },
+    {
+      "case_id": "POS_4_OUT_OF_SCOPE",
+      "scenario": "Out-of-Scope Fallback (Retrieval Threshold Rejection)",
+      "is_valid": true,
+      "error": null,
+      "validated_payload": {
+        "intent": "out_of_scope",
+        "answer": "I don't have enough information to answer that question. Please contact HR directly for assistance.",
+        "sources": [],
+        "is_escalated": false,
+        "application_details": null,
+        "refusal_info": {
+          "reason": "retrieval_threshold",
+          "details": "Query similarity 0.0123 below threshold 0.28.",
+          "similarity_score": 0.0123,
+          "threshold": 0.28
+        }
+      }
+    },
+    {
+      "case_id": "POS_5_SECURITY_VIOLATION",
+      "scenario": "Security Violation Refusal (Prompt Injection Attempt)",
+      "is_valid": true,
+      "error": null,
+      "validated_payload": {
+        "intent": "security_violation",
+        "answer": "I cannot comply with requests that attempt to override system rules or reveal confidential system instructions.",
+        "sources": [],
+        "is_escalated": false,
+        "application_details": null,
+        "refusal_info": {
+          "reason": "prompt_injection",
+          "details": "Matched disallowed prompt override pattern.",
+          "similarity_score": null,
+          "threshold": null
+        }
+      }
+    }
+  ],
+  "negative_tests": [
+    {
+      "case_id": "NEG_1_INVALID_INTENT",
+      "scenario": "Invalid intent literal ('pizza_order')",
+      "is_valid": false,
+      "caught_expected_error": true,
+      "validation_error_message": "1 validation error for AgentResponse\nintent\n  Input should be 'policy_inquiry', 'application_status', 'out_of_scope' or 'security_violation' [type=literal_error, input_value='pizza_order', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/literal_error"
+    },
+    {
+      "case_id": "NEG_2_EMPTY_ANSWER",
+      "scenario": "Empty answer string (violates min_length=1)",
+      "is_valid": false,
+      "caught_expected_error": true,
+      "validation_error_message": "1 validation error for AgentResponse\nanswer\n  String should have at least 1 character [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_too_short"
+    },
+    {
+      "case_id": "NEG_3_WRONG_SALARY_TYPE",
+      "scenario": "Wrong expected_salary data type (string instead of integer)",
+      "is_valid": false,
+      "caught_expected_error": true,
+      "validation_error_message": "1 validation error for AgentResponse\napplication_details.expected_salary_inr\n  Input should be a valid integer, unable to parse string as an integer [type=int_parsing, input_value='not_an_integer', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/int_parsing"
+    },
+    {
+      "case_id": "NEG_4_SCORE_OUT_OF_BOUNDS",
+      "scenario": "Escalation score exceeds 1.0 (violates le=1.0)",
+      "is_valid": false,
+      "caught_expected_error": true,
+      "validation_error_message": "1 validation error for AgentResponse\napplication_details.escalation_score\n  Input should be less than or equal to 1 [type=less_than_equal, input_value=1.85, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.13/v/less_than_equal"
+    }
+  ]
+}

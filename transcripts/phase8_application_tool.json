@@ -1,0 +1,108 @@
+{
+  "phase": "Phase 8 — Custom Tool & Escalation Logic",
+  "timestamp": "2026-09-13T15:50:56.160738",
+  "tool_name": "check_job_application_status",
+  "formula": "escalation_score = 0.50 * priority_flag + 0.50 * (days_since_created / 30.0)",
+  "escalation_threshold": 0.45,
+  "dataset_statistics": {
+    "total_records": 45,
+    "min_score": 0.0167,
+    "max_score": 0.9833,
+    "median_score": 0.2833,
+    "p80_score": 0.4667,
+    "escalated_count": 10,
+    "escalated_percentage": 22.22
+  },
+  "demonstrations": [
+    {
+      "case_id": "CASE_1_HIGH_URGENCY_PRIORITY",
+      "description": "High-urgency priority application with long waiting time",
+      "query_record_id": "APP-035",
+      "result": {
+        "found": true,
+        "record_id": "APP-035",
+        "category": "Sales Associate",
+        "status": "Screening",
+        "expected_salary_inr": 780000,
+        "days_since_created": 29,
+        "flagged_priority_review": true,
+        "escalation_score": 0.9833,
+        "escalated": true,
+        "escalation_threshold": 0.45,
+        "message": "Application 'APP-035' for Sales Associate is currently in 'Screening' status with expected salary of INR 780,000. This case has been ESCALATED (score: 0.9833 >= 0.45) because it is marked for Priority Review and pending for 29 days. A senior recruiter will expedite this review."
+      }
+    },
+    {
+      "case_id": "CASE_2_STANDARD_ROUTINE",
+      "description": "Standard low-latency application without priority flag",
+      "query_record_id": "APP-002",
+      "result": {
+        "found": true,
+        "record_id": "APP-002",
+        "category": "Data Analyst",
+        "status": "Screening",
+        "expected_salary_inr": 980000,
+        "days_since_created": 7,
+        "flagged_priority_review": false,
+        "escalation_score": 0.1167,
+        "escalated": false,
+        "escalation_threshold": 0.45,
+        "message": "Application 'APP-002' for Data Analyst is currently in 'Screening' status with expected salary of INR 980,000. It was created 7 days ago and is progressing through standard evaluation (escalation score: 0.1167 < 0.45)."
+      }
+    },
+    {
+      "case_id": "CASE_3_BRAND_NEW_PRIORITY",
+      "description": "Newly created application with priority review flag",
+      "query_record_id": "APP-005",
+      "result": {
+        "found": true,
+        "record_id": "APP-005",
+        "category": "Sales Associate",
+        "status": "Rejected",
+        "expected_salary_inr": 280000,
+        "days_since_created": 0,
+        "flagged_priority_review": true,
+        "escalation_score": 0.5,
+        "escalated": true,
+        "escalation_threshold": 0.45,
+        "message": "Application 'APP-005' for Sales Associate is currently in 'Rejected' status with expected salary of INR 280,000. This case has been ESCALATED (score: 0.5000 >= 0.45) because it is marked for Priority Review. A senior recruiter will expedite this review."
+      }
+    },
+    {
+      "case_id": "CASE_4_LONG_WAIT_UNFLAGGED",
+      "description": "Long-pending unflagged application exceeding latency threshold",
+      "query_record_id": "APP-032",
+      "result": {
+        "found": true,
+        "record_id": "APP-032",
+        "category": "Software Engineer",
+        "status": "Applied",
+        "expected_salary_inr": 2030000,
+        "days_since_created": 28,
+        "flagged_priority_review": false,
+        "escalation_score": 0.4667,
+        "escalated": true,
+        "escalation_threshold": 0.45,
+        "message": "Application 'APP-032' for Software Engineer is currently in 'Applied' status with expected salary of INR 2,030,000. This case has been ESCALATED (score: 0.4667 >= 0.45) because it is pending for 28 days. A senior recruiter will expedite this review."
+      }
+    },
+    {
+      "case_id": "CASE_5_INVALID_RECORD_ID",
+      "description": "Invalid/nonexistent application ID",
+      "query_record_id": "APP-999",
+      "result": {
+        "found": false,
+        "record_id": "APP-999",
+        "category": null,
+        "status": null,
+        "expected_salary_inr": null,
+        "days_since_created": null,
+        "flagged_priority_review": null,
+        "escalation_score": null,
+        "escalated": false,
+        "escalation_threshold": 0.45,
+        "message": "Job application record 'APP-999' was not found in the database. Please verify the ID format (e.g., 'APP-001')."
+      }
+    }
+  ]
+}

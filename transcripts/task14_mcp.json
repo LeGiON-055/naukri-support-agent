@@ -1,0 +1,71 @@
+{
+  "task": "Task 14 — MCP Tool Lookup",
+  "timestamp": "2026-09-14T00:18:08.781135",
+  "transport": "HTTP (/mcp)",
+  "server_url": "http://127.0.0.1:8001/mcp",
+  "tools_discovered": [
+    {
+      "name": "lookup_application_status",
+      "description": "Look up a job application by record_id and return status with escalation scoring."
+    }
+  ],
+  "tool_count": 1,
+  "test_invocations": [
+    {
+      "record_id": "APP-001",
+      "test_description": "Valid record (should be found)",
+      "success": true,
+      "result": {
+        "found": true,
+        "record_id": "APP-001",
+        "category": "Software Engineer",
+        "status": "Applied",
+        "expected_salary_inr": 1940000,
+        "days_since_created": 3,
+        "flagged_priority_review": true,
+        "escalation_score": 0.55,
+        "escalated": true,
+        "escalation_threshold": 0.45,
+        "message": "Application 'APP-001' for Software Engineer is currently in 'Applied' status with expected salary of INR 1,940,000. This case has been ESCALATED (score: 0.5500 >= 0.45) because it is marked for Priority Review. A senior recruiter will expedite this review."
+      }
+    },
+    {
+      "record_id": "APP-010",
+      "test_description": "Valid record with priority flag",
+      "success": true,
+      "result": {
+        "found": true,
+        "record_id": "APP-010",
+        "category": "Sales Associate",
+        "status": "Offered",
+        "expected_salary_inr": 610000,
+        "days_since_created": 8,
+        "flagged_priority_review": true,
+        "escalation_score": 0.6333,
+        "escalated": true,
+        "escalation_threshold": 0.45,
+        "message": "Application 'APP-010' for Sales Associate is currently in 'Offered' status with expected salary of INR 610,000. This case has been ESCALATED (score: 0.6333 >= 0.45) because it is marked for Priority Review. A senior recruiter will expedite this review."
+      }
+    },
+    {
+      "record_id": "APP-999",
+      "test_description": "Invalid record (should not be found)",
+      "success": true,
+      "result": {
+        "found": false,
+        "record_id": "APP-999",
+        "category": null,
+        "status": null,
+        "expected_salary_inr": null,
+        "days_since_created": null,
+        "flagged_priority_review": null,
+        "escalation_score": null,
+        "escalated": false,
+        "escalation_threshold": 0.45,
+        "message": "Job application record 'APP-999' was not found in the database. Please verify the ID format (e.g., 'APP-001')."
+      }
+    }
+  ],
+  "total_calls": 3,
+  "successful_calls": 3
+}

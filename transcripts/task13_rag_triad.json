@@ -1,0 +1,313 @@
+{
+  "task": "Task 13 — RAG Triad Evaluation at Scale",
+  "timestamp": "2026-09-14T00:16:59.299551",
+  "mock_mode": true,
+  "total_queries": 15,
+  "in_scope_queries": 12,
+  "out_of_scope_queries": 3,
+  "out_of_scope_correctly_refused": 3,
+  "aggregate_averages": {
+    "all_queries": {
+      "context_relevance": 0.6073,
+      "groundedness": 0.8,
+      "answer_relevance": 0.5113
+    },
+    "in_scope_only": {
+      "context_relevance": 0.7349,
+      "groundedness": 1.0,
+      "answer_relevance": 0.6392
+    }
+  },
+  "per_query_results": [
+    {
+      "query_id": "EVAL-01",
+      "topic": "job_application_eligibility",
+      "query": "What are the minimum qualifications and eligibility requirements to apply for a job posting?",
+      "expected_documents": [
+        "job_application_eligibility.txt"
+      ],
+      "answer_preview": "Any individual who meets the minimum qualifications listed in the job posting is eligible to apply for a position throug...",
+      "sources": [
+        "job_application_eligibility.txt"
+      ],
+      "is_supported": true,
+      "is_grounded": true,
+      "rejection_reason": null,
+      "is_out_of_scope": false,
+      "correctly_refused": false,
+      "context_relevance": 0.6567,
+      "groundedness": 1.0,
+      "answer_relevance": 0.7143
+    },
+    {
+      "query_id": "EVAL-02",
+      "topic": "interview_scheduling",
+      "query": "How can a candidate reschedule an interview and what is the notice window required?",
+      "expected_documents": [
+        "interview_scheduling.txt"
+      ],
+      "answer_preview": "If a candidate needs to reschedule, they must request the change at least 24 hours before the originally scheduled inter...",
+      "sources": [
+        "interview_scheduling.txt"
+      ],
+      "is_supported": true,
+      "is_grounded": true,
+      "rejection_reason": null,
+      "is_out_of_scope": false,
+      "correctly_refused": false,
+      "context_relevance": 0.7501,
+      "groundedness": 1.0,
+      "answer_relevance": 0.5
+    },
+    {
+      "query_id": "EVAL-03",
+      "topic": "offer_negotiation",
+      "query": "Can candidates negotiate salary and benefits after receiving an initial offer?",
+      "expected_documents": [
+        "offer_negotiation.txt"
+      ],
+      "answer_preview": "Candidates who receive a job offer may discuss compensation-related aspects such as salary, benefits, and joining date w...",
+      "sources": [
+        "offer_negotiation.txt"
+      ],
+      "is_supported": true,
+      "is_grounded": true,
+      "rejection_reason": null,
+      "is_out_of_scope": false,
+      "correctly_refused": false,
+      "context_relevance": 0.6099,
+      "groundedness": 1.0,
+      "answer_relevance": 0.8571
+    },
+    {
+      "query_id": "EVAL-04",
+      "topic": "probation_period",
+      "query": "How long is the employee probation period and how is performance evaluated?",
+      "expected_documents": [
+        "probation_period.txt"
+      ],
+      "answer_preview": "At the end of the probation period, a formal performance review is conducted to determine whether the employee will be c...",
+      "sources": [
+        "probation_period.txt"
+      ],
+      "is_supported": true,
+      "is_grounded": true,
+      "rejection_reason": null,
+      "is_out_of_scope": false,
+      "correctly_refused": false,
+      "context_relevance": 0.6962,
+      "groundedness": 1.0,
+      "answer_relevance": 0.8333
+    },
+    {
+      "query_id": "EVAL-05",
+      "topic": "remote_work",
+      "query": "What is the policy and manager approval process for remote work eligibility?",
+      "expected_documents": [
+        "remote_work.txt"
+      ],
+      "answer_preview": "Employees whose roles permit remote work must obtain approval from their manager before transitioning to a remote arrang...",
+      "sources": [
+        "remote_work.txt"
+      ],
+      "is_supported": true,
+      "is_grounded": true,
+      "rejection_reason": null,
+      "is_out_of_scope": false,
+      "correctly_refused": false,
+      "context_relevance": 0.8172,
+      "groundedness": 1.0,
+      "answer_relevance": 0.8333
+    },
+    {
+      "query_id": "EVAL-06",
+      "topic": "applicant_data_retention",
+      "query": "How long does the company retain applicant personal data and resume records?",
+      "expected_documents": [
+        "applicant_data_retention.txt"
+      ],
+      "answer_preview": "Applicant information collected during the recruitment process is retained for a period of 24 months from the date of th...",
+      "sources": [
+        "applicant_data_retention.txt",
+        "probation_period.txt"
+      ],
+      "is_supported": true,
+      "is_grounded": true,
+      "rejection_reason": null,
+      "is_out_of_scope": false,
+      "correctly_refused": false,
+      "context_relevance": 0.7172,
+      "groundedness": 1.0,
+      "answer_relevance": 0.4286
+    },
+    {
+      "query_id": "EVAL-07",
+      "topic": "referral_bonus",
+      "query": "When is an employee referral bonus paid out and what are the eligibility terms?",
+      "expected_documents": [
+        "referral_bonus.txt"
+      ],
+      "answer_preview": "Employees who refer a candidate that is subsequently hired may be eligible for a referral bonus as per the company's ref...",
+      "sources": [
+        "referral_bonus.txt"
+      ],
+      "is_supported": true,
+      "is_grounded": true,
+      "rejection_reason": null,
+      "is_out_of_scope": false,
+      "correctly_refused": false,
+      "context_relevance": 0.7713,
+      "groundedness": 1.0,
+      "answer_relevance": 0.5
+    },
+    {
+      "query_id": "EVAL-08",
+      "topic": "background_verification",
+      "query": "What background verification checks are performed on education and employment history?",
+      "expected_documents": [
+        "background_verification.txt"
+      ],
+      "answer_preview": "The verification process may include checks on employment history, educational qualifications, and identity documents su...",
+      "sources": [
+        "background_verification.txt",
+        "applicant_data_retention.txt"
+      ],
+      "is_supported": true,
+      "is_grounded": true,
+      "rejection_reason": null,
+      "is_out_of_scope": false,
+      "correctly_refused": false,
+      "context_relevance": 0.6832,
+      "groundedness": 1.0,
+      "answer_relevance": 0.7143
+    },
+    {
+      "query_id": "EVAL-09",
+      "topic": "internal_transfer",
+      "query": "When can an employee apply for an internal job transfer to another team?",
+      "expected_documents": [
+        "internal_transfer.txt"
+      ],
+      "answer_preview": "Employees who have completed a minimum of 12 months in their current role may request an internal transfer to another de...",
+      "sources": [
+        "internal_transfer.txt"
+      ],
+      "is_supported": true,
+      "is_grounded": true,
+      "rejection_reason": null,
+      "is_out_of_scope": false,
+      "correctly_refused": false,
+      "context_relevance": 0.7537,
+      "groundedness": 1.0,
+      "answer_relevance": 0.7143
+    },
+    {
+      "query_id": "EVAL-10",
+      "topic": "diversity_hiring",
+      "query": "What are the company's equal opportunity and diversity hiring principles?",
+      "expected_documents": [
+        "diversity_hiring.txt"
+      ],
+      "answer_preview": "The company is committed to diversity, inclusion, and equal opportunity in all aspects of the recruitment process. The r...",
+      "sources": [
+        "diversity_hiring.txt"
+      ],
+      "is_supported": true,
+      "is_grounded": true,
+      "rejection_reason": null,
+      "is_out_of_scope": false,
+      "correctly_refused": false,
+      "context_relevance": 0.7244,
+      "groundedness": 1.0,
+      "answer_relevance": 0.6
+    },
+    {
+      "query_id": "EVAL-11",
+      "topic": "notice_period",
+      "query": "What are the rules regarding notice period disclosure and agreeing on joining dates?",
+      "expected_documents": [
+        "notice_period.txt"
+      ],
+      "answer_preview": "Candidates must disclose their notice period during the offer stage so that a mutually agreeable joining date can be det...",
+      "sources": [
+        "notice_period.txt"
+      ],
+      "is_supported": true,
+      "is_grounded": true,
+      "rejection_reason": null,
+      "is_out_of_scope": false,
+      "correctly_refused": false,
+      "context_relevance": 0.8067,
+      "groundedness": 1.0,
+      "answer_relevance": 0.375
+    },
+    {
+      "query_id": "EVAL-12",
+      "topic": "exit_interview",
+      "query": "What is the purpose of an exit interview and is participation mandatory?",
+      "expected_documents": [
+        "exit_interview.txt"
+      ],
+      "answer_preview": "The purpose of the exit interview is to gather feedback about the employee's experience, understand reasons for leaving,...",
+      "sources": [
+        "exit_interview.txt"
+      ],
+      "is_supported": true,
+      "is_grounded": true,
+      "rejection_reason": null,
+      "is_out_of_scope": false,
+      "correctly_refused": false,
+      "context_relevance": 0.8324,
+      "groundedness": 1.0,
+      "answer_relevance": 0.6
+    },
+    {
+      "query_id": "EVAL-13",
+      "topic": "out_of_scope",
+      "query": "What is the weather forecast in Mumbai today?",
+      "expected_documents": [],
+      "answer_preview": "I don't have enough information to answer that question. Please contact HR directly for assistance.",
+      "sources": [],
+      "is_supported": false,
+      "is_grounded": false,
+      "rejection_reason": "retrieval_threshold",
+      "is_out_of_scope": true,
+      "correctly_refused": true,
+      "context_relevance": 0.1573,
+      "groundedness": 0.0,
+      "answer_relevance": 0.0
+    },
+    {
+      "query_id": "EVAL-14",
+      "topic": "out_of_scope",
+      "query": "Can you tell me a funny joke about engineers?",
+      "expected_documents": [],
+      "answer_preview": "I don't have enough information to answer that question. Please contact HR directly for assistance.",
+      "sources": [],
+      "is_supported": false,
+      "is_grounded": false,
+      "rejection_reason": "retrieval_threshold",
+      "is_out_of_scope": true,
+      "correctly_refused": true,
+      "context_relevance": 0.0914,
+      "groundedness": 0.0,
+      "answer_relevance": 0.0
+    },
+    {
+      "query_id": "EVAL-15",
+      "topic": "out_of_scope",
+      "query": "What is the capital of France and its population?",
+      "expected_documents": [],
+      "answer_preview": "I don't have enough information to answer that question. Please contact HR directly for assistance.",
+      "sources": [],
+      "is_supported": false,
+      "is_grounded": false,
+      "rejection_reason": "retrieval_threshold",
+      "is_out_of_scope": true,
+      "correctly_refused": true,
+      "context_relevance": 0.0425,
+      "groundedness": 0.0,
+      "answer_relevance": 0.0
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "task": "Task 15 - SQLite Checkpointing",
+  "timestamp": "2026-09-14T00:19:32.436579",
+  "mock_mode": true,
+  "db_path": "resilience/checkpoints.db",
+  "interruption_demo": {
+    "run_1_halted_at": [
+      "status_tool_node"
+    ],
+    "run_1_completed_nodes": [
+      "guardrail_node",
+      "intent_router_node"
+    ],
+    "run_2_resumed_nodes": [
+      "status_tool_node",
+      "output_validation_node"
+    ],
+    "run_2_final_nodes": [
+      "guardrail_node",
+      "intent_router_node",
+      "status_tool_node",
+      "output_validation_node"
+    ],
+    "interruption_resume_verified": true
+  },
+  "demo_steps": [
+    {
+      "step": "build_graph",
+      "checkpointer_type": "SqliteSaver",
+      "db_path": "resilience/checkpoints.db",
+      "interrupt_before": [
+        "status_tool_node"
+      ]
+    },
+    {
+      "step": "run_1_interrupted",
+      "thread_id": "chk-interrupt-demo",
+      "query": "What is the status of APP-005?",
+      "intent": "application_status",
+      "nodes_executed": [
+        "guardrail_node",
+        "intent_router_node"
+      ],
+      "interrupted_before": [
+        "status_tool_node"
+      ],
+      "checkpoint_saved": true
+    },
+    {
+      "step": "verify_checkpoint",
+      "db_exists": true,
+      "db_size_bytes": 4096,
+      "tables": [
+        "checkpoints",
+        "writes"
+      ],
+      "total_rows": 31
+    },
+    {
+      "step": "run_2_resumed",
+      "thread_id": "chk-interrupt-demo",
+      "previously_completed_nodes_skipped": [
+        "guardrail_node",
+        "intent_router_node"
+      ],
+      "resumed_executed_nodes": [
+        "status_tool_node",
+        "output_validation_node"
+      ],
+      "full_node_history": [
+        "guardrail_node",
+        "intent_router_node",
+        "status_tool_node",
+        "output_validation_node"
+      ],
+      "answer_preview": "Application 'APP-005' for Sales Associate is currently in 'Rejected' status with expected salary of INR 280,000. This ca",
+      "is_valid_schema": true,
+      "interruption_resumed_successfully": true
+    },
+    {
+      "step": "run_query_thread_2",
+      "thread_id": "chk-thread-2",
+      "query": "What is the remote work policy?",
+      "intent": "policy_inquiry",
+      "node_history": [
+        "guardrail_node",
+        "intent_router_node",
+        "rag_policy_node",
+        "output_validation_node"
+      ],
+      "answer_preview": "Remote work arrangements are reviewed periodically and may be modified or revoked based on business needs or changes in ",
+      "is_valid_schema": true
+    },
+    {
+      "step": "resume_checkpoint",
+      "thread_1_state_match": true,
+      "thread_1_resumed_nodes": [
+        "guardrail_node",
+        "intent_router_node",
+        "status_tool_node",
+        "output_validation_node"
+      ],
+      "thread_2_state_match": true,
+      "thread_2_resumed_nodes": [
+        "guardrail_node",
+        "intent_router_node",
+        "rag_policy_node",
+        "output_validation_node"
+      ],
+      "interruption_resumed_verified": true,
+      "state_continuity_verified": true
+    }
+  ],
+  "state_continuity_verified": true
+}
